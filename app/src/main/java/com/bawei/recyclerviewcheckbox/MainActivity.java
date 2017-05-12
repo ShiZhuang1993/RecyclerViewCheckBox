@@ -113,13 +113,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(this, Test.class);
                 startActivity(intent);
         }
-        //获取你选中的item
+       /* //获取你选中的item
         Map<Integer, Boolean> map = adapter.getMap();
         for (int i = 0; i < map.size(); i++) {
             if (map.get(i)) {
                 Log.e("TAG", "你选了第：" + i + "项");
             }
-        }
+        }*/
     }
 
 }
