@@ -1,4 +1,4 @@
-package com.bawei.recyclerviewcheckbox;
+package com.bawei.recyclerviewcheckbox.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,11 +9,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bawei.recyclerviewcheckbox.R;
+import com.bawei.recyclerviewcheckbox.bean.Bean;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,15 +25,10 @@ import java.util.Map;
  * 作者：ShiZhuangZhuang
  * 时间：2017/5/12 20:22
  */
-
-/*public class RecAdapter extends RecyclerView.Adapter{
-    public RecAdapter(MainActivity mainActivity, ArrayList<String> list) {
-    }
-}*/
 public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ViewHolder>
         implements View.OnClickListener, View.OnLongClickListener {
     //数据源
-    private List<String> list;
+    private ArrayList<Bean.DataBean> list;
     private Context context;
     //是否显示单选框,默认false
     private boolean isshowBox = false;
@@ -38,7 +37,7 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ViewHolder>
     //接口实例
     private RecyclerViewOnItemClickListener onItemClickListener;
 
-    public RecAdapter(ArrayList<String> list, Context context) {
+    public RecAdapter(ArrayList<Bean.DataBean> list, Context context) {
         this.context = context;
         this.list = list;
         initMap();
@@ -57,10 +56,12 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ViewHolder>
         private TextView title;
         private CheckBox checkBox;
         private View root;
+        private ImageView pic;
 
         public ViewHolder(View root) {
             super(root);
             this.root = root;
+            pic = (ImageView) root.findViewById(R.id.imager);
             title = (TextView) root.findViewById(R.id.tv);
             checkBox = (CheckBox) root.findViewById(R.id.cb);
         }
@@ -74,7 +75,10 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ViewHolder>
     //绑定视图管理者
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        holder.title.setText(list.get(position));
+        holder.title.setText(list.get(position).getGoods_name());
+        Glide.with(context).load(list.get(position).getGoods_img()).placeholder(R.mipmap
+                .aaaaw).skipMemoryCache(true).into
+                (holder.pic);
         //长按显示/隐藏
         if (isshowBox) {
             holder.checkBox.setVisibility(View.VISIBLE);

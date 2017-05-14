@@ -1,4 +1,4 @@
-package com.bawei.recyclerviewcheckbox;
+package com.bawei.recyclerviewcheckbox.utils;
 
 /**
  * 类用途：

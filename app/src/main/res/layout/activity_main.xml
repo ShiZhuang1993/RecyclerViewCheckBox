@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bawei.recyclerviewcheckbox.MainActivity">
-
+    android:orientation="vertical"
+    tools:context="com.bawei.recyclerviewcheckbox.activity.MainActivity">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:fillViewport="true"
+    >
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_rec"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
-
+</ScrollView>
     <Button
         android:id="@+id/main_bt"
         android:layout_width="match_parent"
@@ -19,4 +25,4 @@
         android:layout_alignParentBottom="true"
         android:text="确定"
         android:textSize="20sp"/>
-</RelativeLayout>
+</LinearLayout>
